@@ -1,15 +1,13 @@
-[package]
-name = "template"
-version = "0.1.1"
-edition = "2024"
-license = "MIT"
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+resolver = "3"
+members = ["crm"]
 
-[dependencies]
-
-[package.metadata.release]
-# Message for the commit that prepares the package version
-pre-release-commit-message = "chore(version): prepare version v{{version}}"
-
-# Description/Annotation message for the Git tag being created
-tag-message = "chore(version): prepare version v{{version}}"
+[workspace.dependencies]
+tokio = { version = "1.52.1", features = ["rt", "rt-multi-thread", "macros"] }
+anyhow = "1.0.82"
+prost = "0.14.3"
+prost-types = "0.14.3"
+tonic = { version = "0.14.5", features = ["zstd", "tls-webpki-roots"] }
+tonic-prost = { version = "0.14.5" }
+tonic-prost-build = "0.14.5"
+prost-build = "0.14.3"
