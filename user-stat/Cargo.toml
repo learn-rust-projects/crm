@@ -1,11 +1,11 @@
 [package]
-name = "crm"
+name = "user-stat"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
 [dependencies]
 tokio = { workspace = true }
-axum = { workspace = true, features = ["macros"] }
+axum = { workspace = true }
 sqlx = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
@@ -17,6 +17,9 @@ prost = { workspace = true }
 prost-types = { workspace = true }
 tonic = { workspace = true }
 tonic-prost = { workspace = true }
-[build-dependencies]
-anyhow = { workspace = true }
-tonic-prost-build = { workspace = true }
+rand = "0.10.1"
+
+
+[dev-dependencies]
+fake = { version = "5.1.0", features = ["derive", "chrono"] }
+nanoid = "0.5.0"
