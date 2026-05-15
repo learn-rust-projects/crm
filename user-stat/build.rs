@@ -1,8 +1,30 @@
 use anyhow::Result;
-
 fn main() -> Result<()> {
-    build_proto::BuildProto::new(tonic_prost_build::configure(), "pb", &["crm/message"])
-        .build_proto(false)?;
+    // let builder = tonic_prost_build::configure()
+    //     .message_attribute("user_stats.User", "#[derive(sqlx::FromRow)]")
+    //     .message_attribute("user_stats.User",
+    // "#[derive(derive_builder::Builder)]")     .field_attribute("email",
+    // "#[builder(setter(into))]")     .message_attribute(
+    //         "user_stats.QueryRequest",
+    //         "#[derive(derive_builder::Builder)]",
+    //     )
+    //     .field_attribute(
+    //         "timestamps",
+    //         r#"#[builder(setter(each(name="timestamp", into)))]"#,
+    //     )
+    //     .message_attribute(
+    //         "user_stats.RawQueryRequest",
+    //         "#[derive(derive_builder::Builder)]",
+    //     )
+    //     .field_attribute("query", "#[builder(setter(into))]")
+    //     .message_attribute("user_stats.TimeQuery",
+    // "#[derive(derive_builder::Builder)]")     .field_attribute("before",
+    // "#[builder(setter(into,strip_option))]")     .field_attribute("after",
+    // "#[builder(setter(into,strip_option))]")     .message_attribute("
+    // user_stats.IdQuery", "#[derive(derive_builder::Builder)]")
+    //     .field_attribute("ids", r#"#[builder(setter(each(name="id", into)))]"#);
+    // build_proto::BuildProto::new(builder, "pb", &["user-stats/messages",
+    // "user-stats/rpc"])     .build_proto()?;
     Ok(())
 }
 #[allow(dead_code)]
@@ -27,10 +49,7 @@ mod build_proto {
                 builder,
             }
         }
-        pub fn build_proto(self, build: bool) -> Result<()> {
-            if !build {
-                return Ok(());
-            }
+        pub fn build_proto(self) -> Result<()> {
             fs::create_dir_all(format!("src/{}", self.mod_name))?;
             self.builder
                 .out_dir(format!("src/{}", self.mod_name))

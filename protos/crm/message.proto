@@ -5,9 +5,9 @@ package crm;
 import "google/protobuf/timestamp.proto";
 
 message User {
-  uint64 id = 1;
-  string name = 2;
-  string email = 3;
+  uint64                    id         = 1;
+  string                    name       = 2;
+  string                    email      = 3;
   google.protobuf.Timestamp created_at = 4;
 }
 
@@ -16,7 +16,7 @@ message GetUserRequest {
 }
 
 message CreateUserRequest {
-  string name = 1;
+  string name  = 1;
   string email = 2;
 }
 
