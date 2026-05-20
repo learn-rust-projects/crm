@@ -1,40 +1,58 @@
 use anyhow::Result;
 use crm::pb::crm::{
-    CreateUserRequest, GetUserRequest, User,
-    user_service_server::{UserService, UserServiceServer},
+    RecallRequest, RemindRequest, WelcomeRequest,
+    crm_server::{Crm, CrmServer},
 };
-use tonic::{Request, Response, Status, async_trait, transport::Server};
+use tonic::{Request, Response, Status, async_trait};
 
 #[derive(Default)]
-pub struct UserServer {}
+pub struct CrmServerImpl {}
 
 #[async_trait]
-impl UserService for UserServer {
-    async fn get_user(&self, request: Request<GetUserRequest>) -> Result<Response<User>, Status> {
-        let input = request.into_inner();
-        println!("get_user: {:?}", input);
-        Ok(Response::new(User::default()))
-    }
-    async fn create_user(
+impl Crm for CrmServerImpl {
+    async fn welcome(
         &self,
-        request: Request<CreateUserRequest>,
-    ) -> Result<Response<User>, Status> {
+        request: Request<WelcomeRequest>,
+    ) -> Result<Response<crm::pb::crm::WelcomeResponse>, Status> {
         let input = request.into_inner();
-        println!("create_user: {:?}", input);
-        let user = User::new(1, &input.name, &input.email);
-        Ok(Response::new(user))
+        println!("welcome: {:?}", input);
+        Ok(Response::new(crm::pb::crm::WelcomeResponse {
+            id: format!("welcome-{}", input.id),
+        }))
+    }
+
+    async fn recall(
+        &self,
+        request: Request<RecallRequest>,
+    ) -> Result<Response<crm::pb::crm::RecallResponse>, Status> {
+        let input = request.into_inner();
+        println!("recall: {:?}", input);
+        Ok(Response::new(crm::pb::crm::RecallResponse {
+            id: format!("recall-{}", input.id),
+        }))
+    }
+
+    async fn remind(
+        &self,
+        request: Request<RemindRequest>,
+    ) -> Result<Response<crm::pb::crm::RemindResponse>, Status> {
+        let input = request.into_inner();
+        println!("remind: {:?}", input);
+        Ok(Response::new(crm::pb::crm::RemindResponse {
+            id: format!("remind-{}", input.id),
+        }))
     }
 }
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let addr = "[::1]:50051".parse().unwrap();
-    let svc = UserServer::default();
+    let addr = "[::1]:50000".parse().unwrap();
+    let svc = CrmServerImpl::default();
 
-    println!("UserService listening on {}", addr);
+    println!("CrmService listening on {}", addr);
 
-    Server::builder()
-        .add_service(UserServiceServer::new(svc))
+    tonic::transport::Server::builder()
+        .add_service(CrmServer::new(svc))
         .serve(addr)
         .await?;
     Ok(())

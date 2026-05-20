@@ -32,7 +32,7 @@ tokio-stream = { workspace = true }
 fake = { workspace = true, optional = true }
 nanoid = { workspace = true, optional = true }
 uuid = { workspace = true }
-
+crm-metadata = { workspace = true }
 [dev-dependencies]
 crm-send = { path = ".", features = ["test_utils"] }
 
