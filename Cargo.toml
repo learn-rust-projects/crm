@@ -44,3 +44,8 @@ itertools = "0.14.0"
 tokio-stream = "0.1.18"
 fake = { version = "5.1.0", features = ["derive", "chrono"] }
 nanoid = "0.5.0"
+
+# 引入子项目
+crm-metadata = { path = "crm-metadata" }
+crm-send = { path = "crm-send" }
+user-stat = { path = "user-stat" }

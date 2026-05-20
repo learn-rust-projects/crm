@@ -4,6 +4,11 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 
+[features]
+default = []
+test_utils = ["sqlx-db-tester"]
+
+
 [dependencies]
 tokio = { workspace = true }
 axum = { workspace = true }
@@ -24,10 +29,12 @@ derive_builder = { workspace = true }
 futures = { workspace = true }
 rand = { workspace = true }
 itertools = { workspace = true }
+sqlx-db-tester = { version = "0.7.1", optional = true }
 
 [dev-dependencies]
 fake = { workspace = true }
 nanoid = { workspace = true }
+sqlx-db-tester = "0.7.1"
 
 [build-dependencies]
 tonic-prost-build = { workspace = true }

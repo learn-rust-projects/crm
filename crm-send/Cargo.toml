@@ -4,6 +4,10 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 
+[features]
+default = []
+test_utils = ["fake", "nanoid"]
+
 [dependencies]
 tokio = { workspace = true }
 axum = { workspace = true }
@@ -25,13 +29,13 @@ futures = { workspace = true }
 rand = { workspace = true }
 itertools = { workspace = true }
 tokio-stream = { workspace = true }
-fake = { workspace = true }
-nanoid = { workspace = true }
+fake = { workspace = true, optional = true }
+nanoid = { workspace = true, optional = true }
 uuid = { workspace = true }
 
 [dev-dependencies]
+crm-send = { path = ".", features = ["test_utils"] }
 
 [build-dependencies]
-fake = { workspace = true }
 crm-common = { path = "../crm-common" }
 anyhow = { workspace = true }
