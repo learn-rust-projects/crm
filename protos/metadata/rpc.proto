@@ -1,0 +1,15 @@
+// RPC service definitions for metadata operations
+
+syntax = "proto3";
+
+package metadata;
+
+import "metadata/messages.proto";
+
+// Metadata service for content materialization
+// Handles streaming RPC for fetching and streaming content metadata
+service Metadata {
+  // Materialize content by streaming content IDs
+  // Takes a stream of content IDs and returns a stream of matching Content objects
+  rpc Materialize(stream MaterializeRequest) returns (stream Content) {}
+}

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crm", "user-stat"]
+members = ["crm", "crm-send", "crm-metadata", "crm-common", "user-stat"]
 
 [workspace.package]
 version = "0.1.0"

@@ -1,0 +1,13 @@
+[package]
+name = "crm-common"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+tonic-prost-build.workspace = true
+
+[build-dependencies]
+anyhow.workspace = true
+tonic-prost-build.workspace = true

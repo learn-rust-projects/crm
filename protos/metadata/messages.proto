@@ -1,0 +1,44 @@
+// Proto definitions for metadata service
+// Manages content metadata including videos, vlogs, movies, and AI-generated content
+
+syntax = "proto3";
+
+package metadata;
+
+import "google/protobuf/timestamp.proto";
+
+// Content type enumeration representing different media formats
+enum ContentType {
+  CONTENT_TYPE_UNSPECIFIED  = 0;  // Default/unknown content type
+  CONTENT_TYPE_SHORT        = 1;  // Short-form content (e.g., clips under 60s)
+  CONTENT_TYPE_VLOG         = 2;  // Video blog content
+  CONTENT_TYPE_MOVIE        = 3;  // Full-length movie content
+  CONTENT_TYPE_AI_GENERATED = 4;  // AI-generated content
+}
+
+// Represents a content entity with metadata
+message Content {
+  uint32                    id          = 1;  // Unique content identifier
+  string                    name        = 2;  // Content title/name
+  string                    description = 3;  // Content description
+  repeated Publisher        publishers  = 4;  // List of content publishers
+  string                    url         = 5;  // Content playback URL
+  string                    image       = 6;  // Content thumbnail image URL
+  ContentType               type        = 7;  // Type of content
+  google.protobuf.Timestamp created_at  = 8;  // Content creation timestamp
+  uint64                    views       = 9;  // Total view count
+  uint64                    likes       = 10; // Total like count
+  uint64                    dislikes    = 11; // Total dislike count
+}
+
+// Represents a content publisher/creator
+message Publisher {
+  uint32 id     = 1; // Unique publisher identifier
+  string name   = 2; // Publisher display name
+  string avatar = 3; // Publisher avatar image URL
+}
+
+// Request message for materializing content by ID
+message MaterializeRequest {
+  uint32 id = 1; // Content ID to materialize
+}

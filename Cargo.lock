@@ -280,6 +280,7 @@ dependencies = [
  "anyhow",
  "axum",
  "chrono",
+ "crm-common",
  "prost",
  "prost-types",
  "serde",
@@ -293,6 +294,47 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
 ]
+
+[[package]]
+name = "crm-common"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "tonic-prost-build",
+]
+
+[[package]]
+name = "crm-metadata"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "chrono",
+ "crm-common",
+ "derive_builder",
+ "fake",
+ "futures",
+ "itertools",
+ "nanoid",
+ "prost",
+ "prost-types",
+ "rand 0.10.1",
+ "serde",
+ "serde_json",
+ "serde_yaml",
+ "sqlx",
+ "tokio",
+ "tokio-stream",
+ "tonic",
+ "tonic-prost",
+ "tower",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "crm-send"
+version = "0.1.0"
 
 [[package]]
 name = "crossbeam-queue"
@@ -2539,6 +2581,7 @@ dependencies = [
  "anyhow",
  "axum",
  "chrono",
+ "crm-common",
  "derive_builder",
  "fake",
  "futures",

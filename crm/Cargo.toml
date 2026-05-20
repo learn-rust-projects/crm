@@ -21,3 +21,4 @@ tracing-subscriber = { workspace = true }
 [build-dependencies]
 anyhow = { workspace = true }
 tonic-prost-build = { workspace = true }
+crm-common = { path = "../crm-common" }
