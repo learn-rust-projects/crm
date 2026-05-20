@@ -15,4 +15,4 @@ update-submodule:
 .PHONY: build test release update-submodule
 
 export:
-	@pg_dump --table=export_user_stats --data-only --column-inserts stats > data.sql
+	@pg_dump  -h localhost -p 5432 -U postgres  --table=export_user_stats --data-only --column-inserts stats > data.sql
