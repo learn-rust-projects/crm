@@ -22,15 +22,15 @@ tonic = { workspace = true }
 tonic-prost = { workspace = true }
 derive_builder = { workspace = true }
 futures = { workspace = true }
-rand = "0.10.1"
-itertools = "0.14.0"
-tokio-stream = "0.1.18"
-fake = { version = "5.1.0", features = ["derive", "chrono"] }
-[dev-dependencies]
+rand = { workspace = true }
+itertools = { workspace = true }
+tokio-stream = { workspace = true }
+fake = { workspace = true }
 
-nanoid = "0.5.0"
+[dev-dependencies]
+nanoid = { workspace = true }
 
 [build-dependencies]
-fake = { version = "5.1.0", features = ["derive", "chrono"] }
+fake = { workspace = true }
 crm-common = { path = "../crm-common" }
 anyhow = { workspace = true }

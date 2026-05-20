@@ -17,7 +17,7 @@ tonic = { version = "0.14.5", features = ["zstd", "tls-webpki-roots"] }
 tonic-prost = { version = "0.14.5" }
 tonic-prost-build = "0.14.5"
 prost-build = "0.14.3"
-serde_yaml = "0.9.34+deprecated"
+serde_yaml = "0.9.34"
 
 # Web框架
 axum = { version = "0.8.9", features = ["macros"] }
@@ -38,3 +38,9 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
 chrono = { version = "0.4", features = ["serde"] }
 derive_builder = { version = "0.20.2" }
+uuid = { version = "1.23.1", features = ["v4"] }
+rand = "0.10.1"
+itertools = "0.14.0"
+tokio-stream = "0.1.18"
+fake = { version = "5.1.0", features = ["derive", "chrono"] }
+nanoid = "0.5.0"
